@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import heroImage from "./assets/1.jpeg";
 
-const NAV_LINKS = ["হোম", "আমাদের সম্পর্কে", "গ্যালারি", "রুটিন", "নোটিশ বোর্ড", "যোগাযোগ"];
+const NAV_LINKS = [
+  { label: "হোম", id: "Home" },
+  { label: "আমাদের সম্পর্কে", id: "About" },
+  { label: "গ্যালারি", id: "Gallery" },
+  { label: "রুটিন", id: "Routines" },
+  { label: "নোটিশ বোর্ড", id: "Notice Board" },
+  { label: "যোগাযোগ", id: "Contact" },
+];
 
 const notices = [
   {
@@ -54,12 +61,12 @@ const notices = [
   },
 ];
 const galleryItems = [
-  { id: 1, src: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80", label: "Sports Meet 2025" },
-  { id: 2, src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80", label: "Classroom Learning" },
-  { id: 3, src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80", label: "Annual Function" },
-  { id: 4, src: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80", label: "Science Laboratory" },
-  { id: 5, src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80", label: "Art & Culture" },
-  { id: 6, src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80", label: "School Campus" },
+  { id: 1, src: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80", label: "বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫" },
+  { id: 2, src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80", label: "শ্রেণিকক্ষে পাঠদান" },
+  { id: 3, src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80", label: "বার্ষিক সাংস্কৃতিক অনুষ্ঠান" },
+  { id: 4, src: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80", label: "বিজ্ঞানাগার" },
+  { id: 5, src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80", label: "চারুকলা ও সংস্কৃতি" },
+  { id: 6, src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80", label: "বিদ্যালয় প্রাঙ্গণ" },
 ];
 
 const routines = [
@@ -180,7 +187,7 @@ export default function KishalaySchool() {
           <span>✉ info@kishaloyschool.edu</span>
         </div>
         <div className="flex gap-5">
-          <span>📍 Anandanagar, Kolkata, WB</span>
+          <span>📍 Anandanagar, Singur, WB</span>
           <span className="text-yellow-400 font-semibold animate-blink">● Admissions Open 2026–27</span>
         </div>
       </div>
@@ -206,12 +213,14 @@ export default function KishalaySchool() {
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map(link => (
-              <button key={link} onClick={() => scrollTo(link)}
+              <button
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
                 className={`nav-btn px-4 py-2 rounded text-sm font-semibold border-none cursor-pointer transition-all duration-150 ${activeSection === link
                   ? "bg-red-700 text-white shadow"
                   : "bg-transparent text-gray-700"
                   }`}>
-                {link}
+                {link.label}
               </button>
             ))}
             <button className="ml-3 px-5 py-2 bg-yellow-500 hover:bg-yellow-400 text-white font-bold text-sm rounded cursor-pointer border-none transition-colors duration-150">
@@ -282,7 +291,7 @@ export default function KishalaySchool() {
 
             {/* Mini stats */}
             <div className="flex gap-10 flex-wrap">
-              {[["2400+", "Students"], ["150+", "Teachers"], ["35+", "Years"]].map(([v, l]) => (
+              {[["২,৪০০+", "শিক্ষার্থী"], ["১৫০+", "প্রশিক্ষিত শিক্ষক"], ["৩৫+", "বছরের ঐতিহ্য"]].map(([v, l]) => (
                 <div key={l}>
                   <div className="text-3xl font-black text-yellow-400">{v}</div>
                   <div className="text-sm text-white/70 mt-0.5">{l}</div>
@@ -292,7 +301,6 @@ export default function KishalaySchool() {
           </div>
         </div>
       </section>
-
       {/* ── NOTICE TICKER ── */}
       <div className="bg-red-700 flex items-center overflow-hidden">
         <div className="bg-red-900 px-5 py-3 flex items-center gap-2 shrink-0">
@@ -646,9 +654,9 @@ export default function KishalaySchool() {
             <h4 className="text-yellow-500 font-black text-sm mb-5 uppercase tracking-widest">দ্রুত লিঙ্কসমূহ</h4>
             <div className="flex flex-col gap-2.5">
               {NAV_LINKS.map(l => (
-                <button key={l} onClick={() => scrollTo(l)}
+                <button key={l.id} onClick={() => scrollTo(l.id)}
                   className="text-gray-400 hover:text-red-400 text-sm text-left bg-transparent border-none cursor-pointer transition-colors">
-                  → {l}
+                  → {l.label}
                 </button>
               ))}
             </div>
@@ -658,7 +666,7 @@ export default function KishalaySchool() {
           <div>
             <h4 className="text-yellow-500 font-black text-sm mb-5 uppercase tracking-widest">Contact</h4>
             <div className="flex flex-col gap-2.5 text-gray-400 text-sm">
-              <span>📍 আনন্দনগর, কলকাতা, পশ্চিমবঙ্গ</span>
+              <span>📍 আনন্দনগর, পশ্চিমবঙ্গ</span>
               <span>📞 +৯১ ৯৮৭৬৫ ৪৩২১০</span>
               <span>✉ info@kishaloyschool.edu</span>
               <span>🌐 www.kishaloyschool.edu</span>
@@ -675,13 +683,13 @@ export default function KishalaySchool() {
               ২০২৬–২৭ শিক্ষাবর্ষের জন্য নার্সারি থেকে দ্বাদশ শ্রেণি পর্যন্ত ভর্তি প্রক্রিয়া শুরু হয়েছে।
             </p>
             <button className="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-sm rounded cursor-pointer border-none transition-colors duration-200">
-              Apply Now →
+              আবেদন করুন →
             </button>
           </div>
         </div>
 
         <div className="border-t border-white/10 py-5 text-center text-gray-500 text-xs">
-          © 2026 আনন্দনগর কিশলয় স্কুল, Kolkata. All Rights Reserved. | Made with ❤️ for Excellence in Education
+          © 2026 আনন্দনগর কিশলয় স্কুল, All Rights Reserved. | Made with ❤️ for Excellence in Education
         </div>
       </footer>
     </div>
