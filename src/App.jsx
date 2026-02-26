@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 import heroImage from "./assets/1.jpeg";
+import aboutImage from "./assets/1.5.jpg";
+import gameImage from "./assets/1.4.jpg";
+import classImage from "./assets/1.9.jpg";
+import utsavImage from "./assets/1.7.jpg";
+import danceImage from "./assets/1.3.jpg";
+import lightImage from "./assets/1.1.jpg";
 
 const NAV_LINKS = [
   { label: "হোম", id: "Home" },
@@ -61,12 +67,12 @@ const notices = [
   },
 ];
 const galleryItems = [
-  { id: 1, src: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80", label: "বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫" },
-  { id: 2, src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80", label: "শ্রেণিকক্ষে পাঠদান" },
-  { id: 3, src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80", label: "বার্ষিক সাংস্কৃতিক অনুষ্ঠান" },
-  { id: 4, src: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80", label: "বিজ্ঞানাগার" },
-  { id: 5, src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80", label: "চারুকলা ও সংস্কৃতি" },
-  { id: 6, src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80", label: "বিদ্যালয় প্রাঙ্গণ" },
+  { id: 1, src: gameImage, label: "বার্ষিক ক্রীড়া প্রতিযোগিতা" },
+  { id: 2, src: classImage, label: "শ্রেণিকক্ষে পাঠদান" },
+  { id: 3, src: utsavImage, label: "বার্ষিক সাংস্কৃতিক অনুষ্ঠান" },
+  { id: 4, src: danceImage, label: "চারুকলা ও সংস্কৃতি" },
+  { id: 5, src: lightImage, label: "বিদ্যালয় প্রাঙ্গণ" },
+  { id: 6, src: heroImage, label: "বিদ্যালয় প্রাঙ্গণ" },
 ];
 
 const routines = [
@@ -181,14 +187,35 @@ export default function KishalaySchool() {
       `}</style>
 
       {/* ── TOP INFO BAR ── */}
-      <div className="bg-red-950 text-red-200 text-xs py-1.5 px-6 flex flex-wrap justify-between items-center gap-2">
-        <div className="flex gap-5">
-          <span>📞 +91 98765 43210</span>
-          <span>✉ info@kishaloyschool.edu</span>
+      <div className="bg-red-950 text-red-200 text-xs overflow-hidden">
+
+        {/* Desktop View */}
+        <div className="hidden md:flex py-1.5 px-6 justify-between items-center">
+          <div className="flex gap-5">
+            <span>📞 +91 98765 43210</span>
+            <span>✉ info@kishaloyschool.edu</span>
+          </div>
+          <div className="flex gap-5">
+            <span>📍 Anandanagar, Singur, WB</span>
+            <span className="text-yellow-400 font-semibold animate-blink">
+              ● Admissions Open 2026–27
+            </span>
+          </div>
         </div>
-        <div className="flex gap-5">
-          <span>📍 Anandanagar, Singur, WB</span>
-          <span className="text-yellow-400 font-semibold animate-blink">● Admissions Open 2026–27</span>
+
+        {/* Mobile Marquee */}
+        <div className="md:hidden whitespace-nowrap">
+          <div className="animate-marquee inline-block py-1.5">
+            📞 +91 98765 43210 &nbsp;&nbsp; ✉ info@kishaloyschool.edu &nbsp;&nbsp; 📍 Anandanagar, Singur, WB &nbsp;&nbsp;
+            <span className="text-yellow-400 font-semibold">
+              ● Admissions Open 2026–27
+            </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            📞 +91 98765 43210 &nbsp;&nbsp; ✉ info@kishaloyschool.edu &nbsp;&nbsp; 📍 Anandanagar, Singur, WB &nbsp;&nbsp;
+            <span className="text-yellow-400 font-semibold">
+              ● Admissions Open 2026–27
+            </span>
+          </div>
         </div>
       </div>
 
@@ -333,7 +360,7 @@ export default function KishalaySchool() {
           {/* Image side */}
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=700&q=80"
+              src={aboutImage}
               alt="Students learning"
               className="w-full h-[420px] object-cover rounded-xl shadow-2xl"
             />
@@ -669,7 +696,6 @@ export default function KishalaySchool() {
               <span>📍 আনন্দনগর, পশ্চিমবঙ্গ</span>
               <span>📞 +৯১ ৯৮৭৬৫ ৪৩২১০</span>
               <span>✉ info@kishaloyschool.edu</span>
-              <span>🌐 www.kishaloyschool.edu</span>
             </div>
           </div>
 
@@ -680,7 +706,7 @@ export default function KishalaySchool() {
             </h4>
 
             <p className="text-gray-400 text-sm leading-relaxed mb-5">
-              ২০২৬–২৭ শিক্ষাবর্ষের জন্য নার্সারি থেকে দ্বাদশ শ্রেণি পর্যন্ত ভর্তি প্রক্রিয়া শুরু হয়েছে।
+              ২০২৬–২৭ শিক্ষাবর্ষের জন্য ভর্তি প্রক্রিয়া শুরু হয়েছে।
             </p>
             <button className="px-6 py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-sm rounded cursor-pointer border-none transition-colors duration-200">
               আবেদন করুন →
