@@ -266,9 +266,12 @@ export default function KishalaySchool() {
         {menuOpen && (
           <div className="md:hidden bg-red-700 flex flex-col">
             {NAV_LINKS.map(link => (
-              <button key={link} onClick={() => scrollTo(link)}
-                className="py-3 px-6 text-left text-white font-semibold text-sm border-b border-red-600 bg-transparent cursor-pointer hover:bg-red-800">
-                {link}
+              <button
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className="py-3 px-6 text-left text-white font-semibold text-sm border-b border-red-600 bg-transparent cursor-pointer hover:bg-red-800"
+              >
+                {link.label}
               </button>
             ))}
           </div>
